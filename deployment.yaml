@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: friday
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: friday
+  template:
+    metadata:
+      labels:
+        app: friday
+    spec:
+      containers:
+        - name: service
+          image: alpine:latest
+          command:
+            - /bin/bash
+            - -c
+            - 'sleep 999999'
+          env:
+            - name: feature1
+              valueFrom:
+                configMapKeyRef:
+                  key: feature1
+                  name: config
+            - name: feature2
+              valueFrom:
+                configMapKeyRef:
+                  key: feature2
+                  name: config
