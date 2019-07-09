@@ -1,6 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: blahconfig
+  name: config
 data:
-  something: somewhere
+  feature1: enabled
+  feature2: enabled
